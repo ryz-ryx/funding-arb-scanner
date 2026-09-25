@@ -41,4 +41,4 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Run paper trading loop
-        run: python paper_trader/run.py
+        run: python -u paper_trader/run.py
