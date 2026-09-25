@@ -1,14 +1,7 @@
 {
   "starting_capital": 10000.0,
-  "cash": 1979.5999999999995,
+  "cash": 1945.1151974816066,
   "positions": {
-    "ONE/USDT:USDT": {
-      "entry_time": "2026-09-25T18:22:36.419410+00:00",
-      "entry_trailing_pct": 82.17671149883354,
-      "notional": 2000.0,
-      "funding_collected": -5.1000000000000005,
-      "last_checked_ms": 1790360556419
-    },
     "BB/USDT:USDT": {
       "entry_time": "2026-09-25T18:22:36.419410+00:00",
       "entry_trailing_pct": 46.835741819978466,
@@ -20,18 +13,35 @@
       "entry_time": "2026-09-25T18:22:36.419410+00:00",
       "entry_trailing_pct": 38.84179935987556,
       "notional": 2000.0,
-      "funding_collected": -5.1000000000000005,
-      "last_checked_ms": 1790360556419
+      "funding_collected": -4.1473292917386,
+      "last_checked_ms": 1790366400000
     },
     "ARX/USDT:USDT": {
       "entry_time": "2026-09-25T18:22:36.419410+00:00",
       "entry_trailing_pct": 27.35427710711865,
       "notional": 2000.0,
+      "funding_collected": -4.471657250562401,
+      "last_checked_ms": 1790366400000
+    },
+    "CASHCAT/USDT:USDT": {
+      "entry_time": "2026-09-25T20:02:15.103962+00:00",
+      "entry_trailing_pct": 31.19246294826878,
+      "notional": 2000.0,
       "funding_collected": -5.1000000000000005,
-      "last_checked_ms": 1790360556419
+      "last_checked_ms": 1790366535103
     }
   },
-  "closed_trades": [],
+  "closed_trades": [
+    {
+      "symbol": "ONE/USDT:USDT",
+      "entry_time": "2026-09-25T18:22:36.419410+00:00",
+      "exit_time": "2026-09-25T20:02:15.103962+00:00",
+      "notional": 2000.0,
+      "funding_collected": -24.284802518393,
+      "close_cost": 5.1000000000000005,
+      "realized_pnl": -29.384802518393002
+    }
+  ],
   "history": [
     {
       "timestamp": "2026-09-25T18:22:36.419410+00:00",
@@ -108,6 +118,30 @@
     {
       "timestamp": "2026-09-25T19:56:59.005409+00:00",
       "equity": 9959.2
+    },
+    {
+      "timestamp": "2026-09-25T20:02:15.103962+00:00",
+      "equity": 9926.296210939305
+    },
+    {
+      "timestamp": "2026-09-25T20:07:29.495091+00:00",
+      "equity": 9926.296210939305
+    },
+    {
+      "timestamp": "2026-09-25T20:12:43.916093+00:00",
+      "equity": 9926.296210939305
+    },
+    {
+      "timestamp": "2026-09-25T20:17:58.307336+00:00",
+      "equity": 9926.296210939305
+    },
+    {
+      "timestamp": "2026-09-25T20:23:12.564942+00:00",
+      "equity": 9926.296210939305
+    },
+    {
+      "timestamp": "2026-09-25T20:28:27.080974+00:00",
+      "equity": 9926.296210939305
     }
   ]
 }
