@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funding Rate Scanner Dashboard</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --panel: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --muted: #8b949e;
+    --pos: #3fb950;
+    --neg: #f85149;
+    --accent: #58a6ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 24px 16px 64px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 24px; }
+  .banner {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .meta span { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; }
+  table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  th, td { padding: 10px 12px; text-align: right; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  th:first-child, td:first-child { text-align: left; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #1c2129; }
+  .pos { color: var(--pos); font-weight: 600; }
+  .neg { color: var(--neg); font-weight: 600; }
+  .symbol { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--text); }
+  .loading, .error { color: var(--muted); padding: 40px 0; text-align: center; }
+  .error { color: var(--neg); }
+  footer { margin-top: 24px; color: var(--muted); font-size: 0.8rem; }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Funding Rate Scanner</h1>
+  <div class="subtitle">OKX USDT perpetuals ranked by trailing 3-day annualized funding rate</div>
+
+  <div class="banner">
+    <strong>Read-only monitor.</strong> This dashboard only displays public funding-rate data
+    collected by a scheduled GitHub Action. No trades are placed, no exchange account is
+    connected, and nothing here executes automatically. See
+    <a href="https://github.com/ryz-ryx/funding-arb-scanner" style="color: inherit;">the repo</a>
+    for the backtest methodology and caveats before acting on anything shown here.
+  </div>
+
+  <div class="meta" id="meta"></div>
+  <div id="content"><div class="loading">Loading latest scan…</div></div>
+
+  <footer>
+    Data refreshes every 6 hours via
+    <a href="https://github.com/ryz-ryx/funding-arb-scanner/actions/workflows/scan.yml">GitHub Actions</a>.
+    Full history in <a href="https://github.com/ryz-ryx/funding-arb-scanner/blob/main/SCAN_LOG.md">SCAN_LOG.md</a>.
+  </footer>
+</div>
+
+<script>
+async function load() {
+  const contentEl = document.getElementById('content');
+  const metaEl = document.getElementById('meta');
+  try {
+    const res = await fetch('data/latest_scan.json?_=' + Date.now());
+    if (!res.ok) throw new Error('No scan data yet (HTTP ' + res.status + ')');
+    const data = await res.json();
+
+    const generated = new Date(data.generated_at);
+    metaEl.innerHTML =
+      '<span>Last scan: ' + generated.toUTCString() + '</span>' +
+      '<span>Min 24h volume: $' + Number(data.min_24h_volume_usdt).toLocaleString() + '</span>' +
+      '<span>Trailing window: ' + data.trailing_intervals + ' funding intervals</span>';
+
+    if (!data.results || data.results.length === 0) {
+      contentEl.innerHTML = '<div class="loading">No candidates matched the filters on this scan.</div>';
+      return;
+    }
+
+    let rows = data.results.map(r => {
+      const pct = r.trailing_3d_annualized_pct;
+      const cls = pct >= 0 ? 'pos' : 'neg';
+      const sign = pct >= 0 ? '+' : '';
+      return '<tr>' +
+        '<td class="symbol">' + r.symbol + '</td>' +
+        '<td class="' + cls + '">' + sign + pct.toFixed(2) + '%</td>' +
+        '<td>$' + Math.round(r['24h_volume_usdt']).toLocaleString() + '</td>' +
+        '</tr>';
+    }).join('');
+
+    contentEl.innerHTML =
+      '<table><thead><tr>' +
+      '<th>Symbol</th><th>Trailing 3d Annualized</th><th>24h Volume</th>' +
+      '</tr></thead><tbody>' + rows + '</tbody></table>';
+  } catch (err) {
+    contentEl.innerHTML = '<div class="error">Could not load scan data: ' + err.message +
+      '<br>The scanner may not have run yet — check the Actions tab.</div>';
+  }
+}
+load();
+</script>
+</body>
+</html>

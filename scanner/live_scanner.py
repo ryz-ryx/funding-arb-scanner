@@ -33,7 +33,10 @@ def trailing_annualized(exchange, symbol):
 
 
 def scan():
-    exchange = ccxt.bybit({"options": {"defaultType": "swap"}})
+    # OKX, not Bybit: Bybit's CloudFront distribution 403-blocks GitHub
+    # Actions' US-region runner IPs entirely ("blocked from your country").
+    # OKX has no such geo-block and exposes the same funding-rate data.
+    exchange = ccxt.okx({"options": {"defaultType": "swap"}})
     markets = exchange.load_markets()
     perp_symbols = [
         m["symbol"] for m in markets.values()
@@ -44,9 +47,15 @@ def scan():
     tickers = exchange.fetch_tickers(perp_symbols)
     for symbol in perp_symbols:
         ticker = tickers.get(symbol)
-        if not ticker or not ticker.get("quoteVolume"):
+        if not ticker or not ticker.get("last"):
             continue
-        if ticker["quoteVolume"] < MIN_24H_VOLUME_USDT:
+        # OKX's own quoteVolume field is unreliable for swaps via ccxt;
+        # info.volCcy24h is base-currency 24h volume -- convert to USDT.
+        vol_ccy24h = ticker.get("info", {}).get("volCcy24h")
+        if vol_ccy24h is None:
+            continue
+        usd_volume = float(vol_ccy24h) * ticker["last"]
+        if usd_volume < MIN_24H_VOLUME_USDT:
             continue
         try:
             fr = exchange.fetch_funding_rate(symbol)
@@ -66,7 +75,7 @@ def scan():
             {
                 "symbol": symbol,
                 "annualized_pct": annualized * 100,
-                "24h_volume_usdt": ticker["quoteVolume"],
+                "24h_volume_usdt": usd_volume,
             }
         )
 
@@ -85,8 +94,12 @@ def scan():
 
 if __name__ == "__main__":
     import datetime
+    import json
+    import os
+    import sys
 
-    now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    now_dt = datetime.datetime.now(datetime.timezone.utc)
+    now = now_dt.strftime("%Y-%m-%d %H:%M UTC")
     print(f"## Scan: {now}\n")
     print(
         f"Min 24h volume ${MIN_24H_VOLUME_USDT:,.0f} | trailing "
@@ -106,3 +119,26 @@ if __name__ == "__main__":
         "filters out one-off spikes. Cross-check any candidate with a full "
         "historical backtest before considering a position._"
     )
+
+    # Machine-readable output for the web dashboard (docs/data/latest_scan.json).
+    out_path = sys.argv[1] if len(sys.argv) > 1 else None
+    if out_path:
+        os.makedirs(os.path.dirname(out_path), exist_ok=True)
+        with open(out_path, "w") as f:
+            json.dump(
+                {
+                    "generated_at": now_dt.isoformat(),
+                    "min_24h_volume_usdt": MIN_24H_VOLUME_USDT,
+                    "trailing_intervals": TRAILING_INTERVALS,
+                    "results": [
+                        {
+                            "symbol": r["symbol"],
+                            "trailing_3d_annualized_pct": r["trailing_3d_annualized_pct"],
+                            "24h_volume_usdt": r["24h_volume_usdt"],
+                        }
+                        for r in top
+                    ],
+                },
+                f,
+                indent=2,
+            )
