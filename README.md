@@ -11,12 +11,27 @@ GitHub Actions, and logs results to [`SCAN_LOG.md`](SCAN_LOG.md).
   just the latest snapshot, which is noisy) and appends the top 40 to
   `SCAN_LOG.md`, committed back to this repo.
 
+## Paper trading loop
+`.github/workflows/paper_trade.yml` runs `paper_trader/run.py` on the same
+schedule, simulating the funding-capture strategy with a virtual $10,000
+balance: it opens a simulated position when a symbol's trailing funding
+clears a threshold, accrues real historical funding into a fake P&L, and
+closes when the rate fades. State lives in `docs/data/portfolio.json`, shown
+on the dashboard below. GitHub Actions caps a single job at 6 hours, so the
+job loops internally for ~5h50m, checkpointing to git every 30 minutes, then
+exits and lets the next scheduled run pick up where it left off — a few
+minutes of gap every 6 hours, not a true always-on process (that would need
+a persistent server, not GitHub Actions).
+
 ## What this does NOT do
-- **It never places an order.** No exchange API keys are configured or
-  required — this only reads Bybit's public market-data endpoints.
-- **It never touches any account, balance, or position.**
-- It is analysis/monitoring only. Deciding whether to act on any result is
-  a decision for a human, made and executed outside this repo.
+- **It never places a real order.** No exchange API keys are configured or
+  required anywhere in this repo — everything reads public market-data
+  endpoints only.
+- **It never touches any real account, balance, or position.** The paper
+  trading loop's "$10,000" and P&L are entirely simulated numbers in a JSON
+  file, not connected to any exchange account.
+- It is analysis/simulation only. Deciding whether to act on any result with
+  real capital is a decision for a human, made and executed outside this repo.
 
 ## Background
 This scanner is one output of a larger research project into whether a

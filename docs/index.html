@@ -73,6 +73,12 @@
     for the backtest methodology and caveats before acting on anything shown here.
   </div>
 
+  <h2 style="font-size:1.1rem;margin:28px 0 4px;">Paper Trading Portfolio</h2>
+  <div class="subtitle">Simulated only — no real orders, no exchange account connected</div>
+  <div class="meta" id="paper-meta"></div>
+  <div id="paper-content"><div class="loading">Loading portfolio…</div></div>
+
+  <h2 style="font-size:1.1rem;margin:28px 0 4px;">Live Funding Scan</h2>
   <div class="meta" id="meta"></div>
   <div id="content"><div class="loading">Loading latest scan…</div></div>
 
@@ -123,7 +129,60 @@ async function load() {
       '<br>The scanner may not have run yet — check the Actions tab.</div>';
   }
 }
+async function loadPaper() {
+  const contentEl = document.getElementById('paper-content');
+  const metaEl = document.getElementById('paper-meta');
+  try {
+    const res = await fetch('data/portfolio.json?_=' + Date.now());
+    if (!res.ok) throw new Error('No portfolio data yet (HTTP ' + res.status + ')');
+    const data = await res.json();
+
+    const positions = data.positions || {};
+    const closed = data.closed_trades || [];
+    const history = data.history || [];
+    const lastPoint = history[history.length - 1];
+    const equity = lastPoint ? lastPoint.equity : data.cash;
+    const pnl = equity - data.starting_capital;
+    const pnlPct = (pnl / data.starting_capital) * 100;
+    const pnlCls = pnl >= 0 ? 'pos' : 'neg';
+    const sign = pnl >= 0 ? '+' : '';
+
+    metaEl.innerHTML =
+      '<span>Equity: $' + equity.toLocaleString(undefined, {maximumFractionDigits: 2}) + '</span>' +
+      '<span class="' + pnlCls + '">P&L: ' + sign + '$' + pnl.toFixed(2) + ' (' + sign + pnlPct.toFixed(2) + '%)</span>' +
+      '<span>Cash: $' + data.cash.toLocaleString(undefined, {maximumFractionDigits: 2}) + '</span>' +
+      '<span>Open positions: ' + Object.keys(positions).length + '</span>' +
+      '<span>Closed trades: ' + closed.length + '</span>';
+
+    let rows = '';
+    for (const [symbol, p] of Object.entries(positions)) {
+      const pnlCls2 = p.funding_collected >= 0 ? 'pos' : 'neg';
+      const sign2 = p.funding_collected >= 0 ? '+' : '';
+      rows += '<tr>' +
+        '<td class="symbol">' + symbol + '</td>' +
+        '<td>$' + p.notional.toFixed(2) + '</td>' +
+        '<td>' + p.entry_trailing_pct.toFixed(2) + '%</td>' +
+        '<td class="' + pnlCls2 + '">' + sign2 + '$' + p.funding_collected.toFixed(4) + '</td>' +
+        '<td>' + new Date(p.entry_time).toUTCString() + '</td>' +
+        '</tr>';
+    }
+
+    if (!rows) {
+      contentEl.innerHTML = '<div class="loading">No open paper positions right now — none of the current candidates clear the entry threshold.</div>';
+    } else {
+      contentEl.innerHTML =
+        '<table><thead><tr>' +
+        '<th>Symbol</th><th>Notional</th><th>Entry Ann.%</th><th>Funding P&L</th><th>Entry Time</th>' +
+        '</tr></thead><tbody>' + rows + '</tbody></table>';
+    }
+  } catch (err) {
+    contentEl.innerHTML = '<div class="error">Could not load portfolio data: ' + err.message +
+      '<br>The paper trading loop may not have run yet — check the Actions tab.</div>';
+  }
+}
+
 load();
+loadPaper();
 </script>
 </body>
 </html>

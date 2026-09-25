@@ -1,0 +1,44 @@
+name: Paper Trading Loop
+
+# Runs a single long-lived job that loops internally for ~5h50m (checking
+# every 5 minutes and checkpointing to git every 30), then exits cleanly
+# just under GitHub Actions' hard 6-hour job limit. The cron below starts
+# the next job every 6 hours, so there is only a few-minute gap between one
+# job's graceful exit and the next one's start -- this is as close to
+# continuous, unattended coverage as GitHub Actions (not a persistent
+# server) can provide. See paper_trader/run.py for details.
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: paper-trading-loop
+  cancel-in-progress: false
+
+jobs:
+  paper_trade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355   # 5h55m, safely under the 6h hard limit
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Configure git for in-loop checkpoints
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Run paper trading loop
+        run: python paper_trader/run.py
