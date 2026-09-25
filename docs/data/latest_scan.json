@@ -1,207 +1,207 @@
 {
-  "generated_at": "2026-09-25T18:01:51.152436+00:00",
+  "generated_at": "2026-09-25T20:57:23.752854+00:00",
   "min_24h_volume_usdt": 2000000,
   "trailing_intervals": 9,
   "results": [
     {
-      "symbol": "ONE/USDT:USDT",
-      "trailing_3d_annualized_pct": 82.17671149883354,
-      "24h_volume_usdt": 127729219.90953001
+      "symbol": "FLOCK/USDT:USDT",
+      "trailing_3d_annualized_pct": -89.92114911967846,
+      "24h_volume_usdt": 4641804.45
     },
     {
-      "symbol": "FLOCK/USDT:USDT",
-      "trailing_3d_annualized_pct": -81.72858623649859,
-      "24h_volume_usdt": 4364651.017999999
+      "symbol": "RIVER/USDT:USDT",
+      "trailing_3d_annualized_pct": 51.82594253635625,
+      "24h_volume_usdt": 4664939.488
+    },
+    {
+      "symbol": "ONE/USDT:USDT",
+      "trailing_3d_annualized_pct": -49.57606575451155,
+      "24h_volume_usdt": 149226594.45468003
+    },
+    {
+      "symbol": "CYPH/USDT:USDT",
+      "trailing_3d_annualized_pct": 49.07994412570026,
+      "24h_volume_usdt": 4500155.1274999995
+    },
+    {
+      "symbol": "RAVE/USDT:USDT",
+      "trailing_3d_annualized_pct": 47.27382498290584,
+      "24h_volume_usdt": 2349128.82768
     },
     {
       "symbol": "BB/USDT:USDT",
       "trailing_3d_annualized_pct": 46.835741819978466,
-      "24h_volume_usdt": 4051748.4719999996
-    },
-    {
-      "symbol": "RIVER/USDT:USDT",
-      "trailing_3d_annualized_pct": 41.74706412721619,
-      "24h_volume_usdt": 5978182.735
-    },
-    {
-      "symbol": "APR/USDT:USDT",
-      "trailing_3d_annualized_pct": 38.84179935987556,
-      "24h_volume_usdt": 3039019.068
+      "24h_volume_usdt": 4044259.5409999997
     },
     {
       "symbol": "LAB/USDT:USDT",
-      "trailing_3d_annualized_pct": 32.82593794412503,
-      "24h_volume_usdt": 6647537.0823
+      "trailing_3d_annualized_pct": 42.39959654063116,
+      "24h_volume_usdt": 5938337.17141
     },
     {
-      "symbol": "KII/USDT:USDT",
-      "trailing_3d_annualized_pct": 30.230693921101253,
-      "24h_volume_usdt": 3624024.5820000004
+      "symbol": "APR/USDT:USDT",
+      "trailing_3d_annualized_pct": 42.18555079638553,
+      "24h_volume_usdt": 3123659.936
     },
     {
-      "symbol": "RAVE/USDT:USDT",
-      "trailing_3d_annualized_pct": 30.10509078475475,
-      "24h_volume_usdt": 2371601.0674199997
+      "symbol": "CASHCAT/USDT:USDT",
+      "trailing_3d_annualized_pct": 31.19246294826878,
+      "24h_volume_usdt": 16923685.752
     },
     {
       "symbol": "ARX/USDT:USDT",
-      "trailing_3d_annualized_pct": 27.35427710711865,
-      "24h_volume_usdt": 3635233.944
-    },
-    {
-      "symbol": "AAOI/USDT:USDT",
-      "trailing_3d_annualized_pct": 25.363435899708463,
-      "24h_volume_usdt": 7400817.9089
+      "trailing_3d_annualized_pct": 30.56836216619738,
+      "24h_volume_usdt": 3195586.086
     },
     {
       "symbol": "XAU/USDT:USDT",
       "trailing_3d_annualized_pct": 25.3069839428826,
-      "24h_volume_usdt": 257730882.38850003
+      "24h_volume_usdt": 254277932.46729997
+    },
+    {
+      "symbol": "MINA/USDT:USDT",
+      "trailing_3d_annualized_pct": -24.92845996872868,
+      "24h_volume_usdt": 3167774.08896
     },
     {
       "symbol": "AMZN/USDT:USDT",
       "trailing_3d_annualized_pct": 24.889623743479884,
-      "24h_volume_usdt": 3998627.2436
+      "24h_volume_usdt": 4023560.9359999998
+    },
+    {
+      "symbol": "H/USDT:USDT",
+      "trailing_3d_annualized_pct": 24.626788630822983,
+      "24h_volume_usdt": 8333293.5
     },
     {
       "symbol": "CRCL/USDT:USDT",
       "trailing_3d_annualized_pct": 24.325532761155817,
-      "24h_volume_usdt": 39537302.04
+      "24h_volume_usdt": 36538270.302
     },
     {
       "symbol": "XAG/USDT:USDT",
       "trailing_3d_annualized_pct": 22.031640564120917,
-      "24h_volume_usdt": 75442884.7302
-    },
-    {
-      "symbol": "UP/USDT:USDT",
-      "trailing_3d_annualized_pct": 20.49109593699398,
-      "24h_volume_usdt": 2621162.733
-    },
-    {
-      "symbol": "MINA/USDT:USDT",
-      "trailing_3d_annualized_pct": -20.471116062744045,
-      "24h_volume_usdt": 3886631.49744
+      "24h_volume_usdt": 73488931.63470002
     },
     {
       "symbol": "SOXS/USDT:USDT",
       "trailing_3d_annualized_pct": 19.795680576815318,
-      "24h_volume_usdt": 14559201.225
+      "24h_volume_usdt": 14592060.236
     },
     {
-      "symbol": "CASHCAT/USDT:USDT",
-      "trailing_3d_annualized_pct": 19.599887519037836,
-      "24h_volume_usdt": 15383286.57
+      "symbol": "EDGE/USDT:USDT",
+      "trailing_3d_annualized_pct": 19.386099780495318,
+      "24h_volume_usdt": 2994224.652
     },
     {
       "symbol": "ORCL/USDT:USDT",
       "trailing_3d_annualized_pct": 18.90662845026602,
-      "24h_volume_usdt": 5251213.210399999
-    },
-    {
-      "symbol": "H/USDT:USDT",
-      "trailing_3d_annualized_pct": 18.064437773744736,
-      "24h_volume_usdt": 7988265.476399999
+      "24h_volume_usdt": 5357652.204600001
     },
     {
       "symbol": "AVGO/USDT:USDT",
       "trailing_3d_annualized_pct": 17.4837554010339,
-      "24h_volume_usdt": 4101648.1872000005
+      "24h_volume_usdt": 3777187.6988999997
     },
     {
       "symbol": "MSTR/USDT:USDT",
       "trailing_3d_annualized_pct": 16.92746961830747,
-      "24h_volume_usdt": 33661731.97359999
+      "24h_volume_usdt": 32042719.202400003
     },
     {
-      "symbol": "EDGE/USDT:USDT",
-      "trailing_3d_annualized_pct": 15.207649381707784,
-      "24h_volume_usdt": 3046019.571
+      "symbol": "BILL/USDT:USDT",
+      "trailing_3d_annualized_pct": 14.621896697309666,
+      "24h_volume_usdt": 4012375.692
     },
     {
-      "symbol": "SPCX/USDT:USDT",
-      "trailing_3d_annualized_pct": 13.936180807864302,
-      "24h_volume_usdt": 123988978.27839999
+      "symbol": "PONS/USDT:USDT",
+      "trailing_3d_annualized_pct": 14.376165895890965,
+      "24h_volume_usdt": 34729249.28
     },
     {
       "symbol": "SNXX/USDT:USDT",
       "trailing_3d_annualized_pct": 13.54832733830425,
-      "24h_volume_usdt": 46026977.69800001
+      "24h_volume_usdt": 41410175.763
     },
     {
-      "symbol": "PONS/USDT:USDT",
-      "trailing_3d_annualized_pct": 13.074595872446817,
-      "24h_volume_usdt": 34110921.529999994
-    },
-    {
-      "symbol": "TRX/USDT:USDT",
-      "trailing_3d_annualized_pct": -11.829780780087649,
-      "24h_volume_usdt": 9368712.998000002
-    },
-    {
-      "symbol": "ARB/USDT:USDT",
-      "trailing_3d_annualized_pct": -11.726484708909982,
-      "24h_volume_usdt": 90721155.34881
-    },
-    {
-      "symbol": "BILL/USDT:USDT",
-      "trailing_3d_annualized_pct": 11.397113834556318,
-      "24h_volume_usdt": 3868524.488
-    },
-    {
-      "symbol": "BEAT/USDT:USDT",
-      "trailing_3d_annualized_pct": 11.286298665174183,
-      "24h_volume_usdt": 9035284.25778
+      "symbol": "KII/USDT:USDT",
+      "trailing_3d_annualized_pct": -11.10920462662017,
+      "24h_volume_usdt": 3498668.2639999995
     },
     {
       "symbol": "ADA/USDT:USDT",
       "trailing_3d_annualized_pct": 10.950000000000001,
-      "24h_volume_usdt": 73446358.35700001
+      "24h_volume_usdt": 71630694.52
+    },
+    {
+      "symbol": "CFX/USDT:USDT",
+      "trailing_3d_annualized_pct": 10.950000000000001,
+      "24h_volume_usdt": 3949104.0836
+    },
+    {
+      "symbol": "CORE/USDT:USDT",
+      "trailing_3d_annualized_pct": 10.793310181079987,
+      "24h_volume_usdt": 2787813.49454
+    },
+    {
+      "symbol": "CHZ/USDT:USDT",
+      "trailing_3d_annualized_pct": 10.570283502891598,
+      "24h_volume_usdt": 2264398.4452
     },
     {
       "symbol": "AR/USDT:USDT",
       "trailing_3d_annualized_pct": 10.528349169143949,
-      "24h_volume_usdt": 7861152.9821999995
+      "24h_volume_usdt": 7886290.746800001
+    },
+    {
+      "symbol": "BEAT/USDT:USDT",
+      "trailing_3d_annualized_pct": 10.4323380435206,
+      "24h_volume_usdt": 8949569.7185
+    },
+    {
+      "symbol": "DGAI/USDT:USDT",
+      "trailing_3d_annualized_pct": 9.087186637572268,
+      "24h_volume_usdt": 18699179.07
     },
     {
       "symbol": "ALGO/USDT:USDT",
       "trailing_3d_annualized_pct": 8.833840051659783,
-      "24h_volume_usdt": 6508963.9634
+      "24h_volume_usdt": 6651570.7454
+    },
+    {
+      "symbol": "CAP/USDT:USDT",
+      "trailing_3d_annualized_pct": 8.409047984076432,
+      "24h_volume_usdt": 5950920.707
     },
     {
       "symbol": "DOGE/USDT:USDT",
       "trailing_3d_annualized_pct": 8.293963604977817,
-      "24h_volume_usdt": 435474925.812
+      "24h_volume_usdt": 439462498.8203
     },
     {
-      "symbol": "BCH/USDT:USDT",
-      "trailing_3d_annualized_pct": 7.709185409757318,
-      "24h_volume_usdt": 81068082.09
-    },
-    {
-      "symbol": "BZ/USDT:USDT",
-      "trailing_3d_annualized_pct": -7.666589028596217,
-      "24h_volume_usdt": 39682392.1283
+      "symbol": "BONK/USDT:USDT",
+      "trailing_3d_annualized_pct": 8.231436164564585,
+      "24h_volume_usdt": 10242446.579400001
     },
     {
       "symbol": "BNB/USDT:USDT",
       "trailing_3d_annualized_pct": 7.323168407885284,
-      "24h_volume_usdt": 49264829.12100001
+      "24h_volume_usdt": 47509521.493
     },
     {
       "symbol": "AKE/USDT:USDT",
       "trailing_3d_annualized_pct": 7.254941539342917,
-      "24h_volume_usdt": 125864199.44699998
+      "24h_volume_usdt": 120123969.87099999
     },
     {
       "symbol": "AAVE/USDT:USDT",
       "trailing_3d_annualized_pct": 6.534293167381799,
-      "24h_volume_usdt": 70797893.21
+      "24h_volume_usdt": 70702560.2304
     },
     {
-      "symbol": "CAP/USDT:USDT",
-      "trailing_3d_annualized_pct": 6.356981024956318,
-      "24h_volume_usdt": 6114781.932
+      "symbol": "CNPY/USDT:USDT",
+      "trailing_3d_annualized_pct": 5.968757082241952,
+      "24h_volume_usdt": 7580448.297
     }
   ]
 }
