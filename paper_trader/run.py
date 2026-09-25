@@ -83,6 +83,9 @@ def git_checkpoint(message):
         if result.returncode == 0:
             return  # nothing changed
         subprocess.run(["git", "commit", "-m", message], cwd=REPO_ROOT, check=True)
+        # The scan.yml workflow can push to main around the same schedule mark;
+        # rebase onto whatever's there before pushing so a race doesn't fail this checkpoint.
+        subprocess.run(["git", "pull", "--rebase", "origin", "main"], cwd=REPO_ROOT, check=True)
         subprocess.run(["git", "push"], cwd=REPO_ROOT, check=True)
     except subprocess.CalledProcessError as e:
         print(f"  (checkpoint commit/push failed, will retry next cycle: {e})")
