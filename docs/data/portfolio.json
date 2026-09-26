@@ -7,28 +7,28 @@
       "entry_trailing_pct": 46.835741819978466,
       "notional": 2000.0,
       "funding_collected": -3.5210986570666005,
-      "last_checked_ms": 1790380800000
+      "last_checked_ms": 1790409600000
     },
     "APR/USDT:USDT": {
       "entry_time": "2026-09-25T18:22:36.419410+00:00",
       "entry_trailing_pct": 38.84179935987556,
       "notional": 2000.0,
-      "funding_collected": -2.4599642810306004,
-      "last_checked_ms": 1790395200000
+      "funding_collected": -1.8006866398642005,
+      "last_checked_ms": 1790409600000
     },
     "CASHCAT/USDT:USDT": {
       "entry_time": "2026-09-25T20:02:15.103962+00:00",
       "entry_trailing_pct": 31.19246294826878,
       "notional": 2000.0,
-      "funding_collected": 0.12458587073839933,
-      "last_checked_ms": 1790395200000
+      "funding_collected": 2.349267258896199,
+      "last_checked_ms": 1790409600000
     },
     "CYPH/USDT:USDT": {
       "entry_time": "2026-09-26T05:06:35.025079+00:00",
       "entry_trailing_pct": 44.76010080224705,
       "notional": 2000.0,
       "funding_collected": -5.1000000000000005,
-      "last_checked_ms": 1790399195025
+      "last_checked_ms": 1790409600000
     }
   },
   "closed_trades": [
@@ -443,6 +443,34 @@
     {
       "timestamp": "2026-09-26T07:22:50.918597+00:00",
       "equity": 9921.452451345313
+    },
+    {
+      "timestamp": "2026-09-26T07:52:27.058841+00:00",
+      "equity": 9921.452451345313
+    },
+    {
+      "timestamp": "2026-09-26T07:57:42.961441+00:00",
+      "equity": 9921.452451345313
+    },
+    {
+      "timestamp": "2026-09-26T08:02:57.300213+00:00",
+      "equity": 9924.336410374637
+    },
+    {
+      "timestamp": "2026-09-26T08:08:11.685538+00:00",
+      "equity": 9924.336410374637
+    },
+    {
+      "timestamp": "2026-09-26T08:13:26.022813+00:00",
+      "equity": 9924.336410374637
+    },
+    {
+      "timestamp": "2026-09-26T08:18:40.401993+00:00",
+      "equity": 9924.336410374637
+    },
+    {
+      "timestamp": "2026-09-26T08:23:54.797677+00:00",
+      "equity": 9924.336410374637
     }
   ]
 }
