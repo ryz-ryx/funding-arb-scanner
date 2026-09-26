@@ -2,19 +2,23 @@ name: Paper Trading Loop
 
 # Runs a single long-lived job that loops internally for ~5h50m (checking
 # every 5 minutes and checkpointing to git every 30), then exits cleanly
-# just under GitHub Actions' hard 6-hour job limit. The cron below starts
-# the next job every 6 hours, so there is only a few-minute gap between one
-# job's graceful exit and the next one's start -- this is as close to
-# continuous, unattended coverage as GitHub Actions (not a persistent
-# server) can provide. See paper_trader/run.py for details.
+# just under GitHub Actions' hard 6-hour job limit.
+#
+# Continuity is driven by SELF-DISPATCH, not cron: paper_trader/run.py calls
+# the GitHub API near the end of its run to trigger the next run directly.
+# This was added after an observed ~4.5h gap when relying on cron alone --
+# GitHub's schedule triggers on low-activity repos can be delayed by hours.
+# The cron below is kept only as a once-a-day safety net in case a run ever
+# crashes before reaching its self-dispatch call. See paper_trader/run.py.
 
 on:
   schedule:
-    - cron: "5 */6 * * *"   # offset 5m from scan.yml's on-the-hour trigger to avoid a push race
+    - cron: "5 0 * * *"     # once-daily fallback only, in case self-dispatch ever fails
   workflow_dispatch: {}
 
 permissions:
   contents: write
+  actions: write   # required for the in-loop self-dispatch API call
 
 concurrency:
   group: paper-trading-loop
@@ -41,4 +45,6 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Run paper trading loop
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python -u paper_trader/run.py

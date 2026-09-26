@@ -7,11 +7,18 @@ reads public market data, same as scanner/live_scanner.py).
 Runs as a LONG-LIVED LOOP (not a one-shot), checking every CHECK_INTERVAL_SECONDS
 and checkpointing (git commit + push) its state periodically, so progress
 survives even if the job is killed. It exits cleanly before MAX_JOB_SECONDS to
-stay under GitHub Actions' hard 6-hour job limit; the workflow's cron
-(every 6h) starts the next job, so the only gap is the few minutes between
-one job's graceful exit and the next one's start -- GitHub Actions has no way
-to run a single job forever, this is the closest continuous coverage gets on
-that platform. True zero-gap execution needs an always-on server instead.
+stay under GitHub Actions' hard 6-hour job limit.
+
+Continuity does NOT rely on the workflow's cron schedule -- GitHub's cron
+triggers for low-activity repos can be delayed by hours (observed: a ~4.5h
+gap overnight on 2026-09-25/26). Instead, shortly before exiting, this script
+calls the GitHub API to dispatch the *next* run of this same workflow
+directly (self-triggering), which fires immediately rather than waiting on
+cron. The workflow's cron trigger is kept only as a once-a-day fallback in
+case a run ever crashes before reaching the self-dispatch call. GitHub
+Actions has no way to run a single job forever regardless -- this is the
+closest continuous coverage gets on that platform without an always-on
+server.
 
 Strategy simulated: delta-neutral (long spot + short perp, equal notional).
 Enter when a symbol's trailing 3-day annualized funding rate clears
@@ -29,6 +36,8 @@ import json
 import os
 import subprocess
 import time
+import urllib.error
+import urllib.request
 
 import ccxt
 
@@ -51,6 +60,7 @@ TRAILING_INTERVALS = 9          # 3 days at 8h funding interval
 CHECK_INTERVAL_SECONDS = 5 * 60       # re-check every 5 minutes
 COMMIT_INTERVAL_SECONDS = 30 * 60     # checkpoint to git every 30 minutes
 MAX_JOB_SECONDS = 5 * 3600 + 50 * 60  # exit at 5h50m, under the 6h Actions cap
+HANDOFF_AT_SECONDS = MAX_JOB_SECONDS - 10 * 60  # self-dispatch the next run 10min before exiting
 
 
 def load_state():
@@ -89,6 +99,35 @@ def git_checkpoint(message):
         subprocess.run(["git", "push"], cwd=REPO_ROOT, check=True)
     except subprocess.CalledProcessError as e:
         print(f"  (checkpoint commit/push failed, will retry next cycle: {e})")
+
+
+def dispatch_next_run():
+    """Trigger the next run of this same workflow via the GitHub API, instead
+    of waiting on cron (which has been observed delayed by hours on this repo).
+    Uses the job's own GITHUB_TOKEN -- no extra secret needed. Best-effort:
+    if it fails, the daily cron fallback in paper_trade.yml will eventually
+    pick things back up, just with a longer gap."""
+    token = os.environ.get("GITHUB_TOKEN")
+    repo = os.environ.get("GITHUB_REPOSITORY")  # "owner/repo", set automatically in Actions
+    if not token or not repo:
+        print("  (no GITHUB_TOKEN/GITHUB_REPOSITORY in env -- skipping self-dispatch, "
+              "relying on cron fallback)")
+        return
+    url = f"https://api.github.com/repos/{repo}/actions/workflows/paper_trade.yml/dispatches"
+    body = json.dumps({"ref": "main"}).encode()
+    req = urllib.request.Request(url, data=body, method="POST", headers={
+        "Authorization": f"Bearer {token}",
+        "Accept": "application/vnd.github+json",
+        "Content-Type": "application/json",
+    })
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            print(f"  self-dispatched next run (HTTP {resp.status})")
+    except urllib.error.HTTPError as e:
+        print(f"  (self-dispatch failed: HTTP {e.code} {e.read().decode(errors='replace')} "
+              f"-- relying on cron fallback)")
+    except Exception as e:
+        print(f"  (self-dispatch failed: {e} -- relying on cron fallback)")
 
 
 def trailing_annualized(exchange, symbol):
@@ -213,9 +252,11 @@ def main():
     state = load_state()
     start_time = time.monotonic()
     last_commit_time = 0.0
+    handed_off = False
 
     print(f"Paper trading loop starting. Checking every {CHECK_INTERVAL_SECONDS}s, "
           f"checkpointing every {COMMIT_INTERVAL_SECONDS}s, "
+          f"self-dispatching the next run at {HANDOFF_AT_SECONDS}s, "
           f"exiting after {MAX_JOB_SECONDS}s to stay under the Actions job limit.")
 
     while time.monotonic() - start_time < MAX_JOB_SECONDS:
@@ -229,18 +270,29 @@ def main():
 
         save_state(state)
 
+        elapsed = time.monotonic() - start_time
         elapsed_since_commit = time.monotonic() - last_commit_time
         if elapsed_since_commit >= COMMIT_INTERVAL_SECONDS:
             git_checkpoint(f"Paper trader checkpoint: {now.isoformat()}")
             last_commit_time = time.monotonic()
+
+        if not handed_off and elapsed >= HANDOFF_AT_SECONDS:
+            print(f"[{now.isoformat()}] approaching job limit -- self-dispatching next run")
+            dispatch_next_run()
+            handed_off = True
 
         time.sleep(CHECK_INTERVAL_SECONDS)
 
     save_state(state)
     git_checkpoint(f"Paper trader final checkpoint before job exit: "
                     f"{datetime.datetime.now(datetime.timezone.utc).isoformat()}")
+    if not handed_off:
+        # Loop ended earlier than expected (e.g. repeated errors) without
+        # reaching the normal handoff point -- try once more here so
+        # continuity doesn't depend solely on the daily cron fallback.
+        dispatch_next_run()
     print("Reached max job runtime -- exiting cleanly. "
-          "The next scheduled workflow run will resume from the saved state.")
+          "The next run was self-dispatched and should start within moments.")
 
 
 if __name__ == "__main__":
