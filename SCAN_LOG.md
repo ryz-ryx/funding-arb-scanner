@@ -258,3 +258,54 @@ _Read-only scan. No orders are placed. Trailing3d Ann.% is the average of the la
 
 ---
 
+## Scan: 2026-09-26 20:29 UTC
+
+Min 24h volume $2,000,000 | trailing 9 intervals on top 60 candidates
+
+| Symbol | Trailing 3d Annualized % | 24h Volume USDT |
+|---|---:|---:|
+| ONE/USDT:USDT | -412.36% | 70,879,171 |
+| 2Z/USDT:USDT | -130.69% | 77,711,418 |
+| KII/USDT:USDT | -125.79% | 2,359,237 |
+| CASHCAT/USDT:USDT | 80.39% | 11,807,046 |
+| LAB/USDT:USDT | 63.23% | 4,670,440 |
+| RIVER/USDT:USDT | 63.04% | 2,332,891 |
+| FLOCK/USDT:USDT | -52.61% | 3,832,676 |
+| H/USDT:USDT | 46.57% | 12,325,632 |
+| ESP/USDT:USDT | -41.17% | 2,830,299 |
+| BILL/USDT:USDT | 36.42% | 6,347,723 |
+| ARX/USDT:USDT | 31.51% | 2,030,809 |
+| SOON/USDT:USDT | 27.62% | 2,006,403 |
+| EDGE/USDT:USDT | 24.65% | 7,203,255 |
+| CP/USDT:USDT | 23.20% | 7,761,493 |
+| PONS/USDT:USDT | 19.52% | 30,564,326 |
+| BEAT/USDT:USDT | 15.10% | 35,032,455 |
+| JELLYJELLY/USDT:USDT | 14.63% | 9,046,220 |
+| TRX/USDT:USDT | -11.98% | 4,359,306 |
+| AERO/USDT:USDT | 11.47% | 23,958,156 |
+| ADA/USDT:USDT | 10.95% | 59,246,051 |
+| CFX/USDT:USDT | 10.95% | 2,902,046 |
+| DYDX/USDT:USDT | 10.95% | 3,895,425 |
+| CORE/USDT:USDT | 10.79% | 2,518,216 |
+| AR/USDT:USDT | 10.12% | 7,861,520 |
+| AKE/USDT:USDT | 9.90% | 78,271,957 |
+| SUI/USDT:USDT | 9.38% | 196,762,590 |
+| CAP/USDT:USDT | 9.11% | 2,742,666 |
+| ALGO/USDT:USDT | 8.83% | 4,955,408 |
+| ETC/USDT:USDT | 8.45% | 13,433,482 |
+| CRV/USDT:USDT | 8.32% | 10,104,215 |
+| DOGE/USDT:USDT | 8.29% | 256,916,499 |
+| DGAI/USDT:USDT | 8.06% | 14,154,260 |
+| AAVE/USDT:USDT | 6.41% | 39,269,062 |
+| BICO/USDT:USDT | 6.34% | 2,258,819 |
+| BASED/USDT:USDT | 6.20% | 2,064,009 |
+| XRP/USDT:USDT | 6.18% | 329,733,145 |
+| CNPY/USDT:USDT | 5.76% | 4,079,557 |
+| ENA/USDT:USDT | 5.60% | 148,930,559 |
+| DOT/USDT:USDT | 5.54% | 28,938,761 |
+| DATA/USDT:USDT | 5.48% | 2,913,886 |
+
+_Read-only scan. No orders are placed. Trailing3d Ann.% is the average of the last ~3 days of funding intervals, annualized -- filters out one-off spikes. Cross-check any candidate with a full historical backtest before considering a position._
+
+---
+
