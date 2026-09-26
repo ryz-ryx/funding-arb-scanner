@@ -1,6 +1,6 @@
 {
   "starting_capital": 10000.0,
-  "cash": 1932.4089284126708,
+  "cash": 1917.1089284126706,
   "positions": {
     "BB/USDT:USDT": {
       "entry_time": "2026-09-25T18:22:36.419410+00:00",
@@ -13,22 +13,22 @@
       "entry_time": "2026-09-25T18:22:36.419410+00:00",
       "entry_trailing_pct": 38.84179935987556,
       "notional": 2000.0,
-      "funding_collected": -1.8006866398642005,
-      "last_checked_ms": 1790409600000
+      "funding_collected": -0.6203416417196006,
+      "last_checked_ms": 1790424000000
     },
     "CASHCAT/USDT:USDT": {
       "entry_time": "2026-09-25T20:02:15.103962+00:00",
       "entry_trailing_pct": 31.19246294826878,
       "notional": 2000.0,
-      "funding_collected": 2.349267258896199,
-      "last_checked_ms": 1790409600000
+      "funding_collected": 3.479253096164199,
+      "last_checked_ms": 1790424000000
     },
-    "CYPH/USDT:USDT": {
-      "entry_time": "2026-09-26T05:06:35.025079+00:00",
-      "entry_trailing_pct": 44.76010080224705,
+    "AMZN/USDT:USDT": {
+      "entry_time": "2026-09-26T11:43:11.676097+00:00",
+      "entry_trailing_pct": 21.1328119333097,
       "notional": 2000.0,
       "funding_collected": -5.1000000000000005,
-      "last_checked_ms": 1790409600000
+      "last_checked_ms": 1790422991676
     }
   },
   "closed_trades": [
@@ -49,6 +49,15 @@
       "funding_collected": -2.5062690689358007,
       "close_cost": 5.1000000000000005,
       "realized_pnl": -7.606269068935801
+    },
+    {
+      "symbol": "CYPH/USDT:USDT",
+      "entry_time": "2026-09-26T05:06:35.025079+00:00",
+      "exit_time": "2026-09-26T11:43:11.676097+00:00",
+      "notional": 2000.0,
+      "funding_collected": -5.1000000000000005,
+      "close_cost": 5.1000000000000005,
+      "realized_pnl": -10.200000000000001
     }
   ],
   "history": [
@@ -615,6 +624,30 @@
     {
       "timestamp": "2026-09-26T11:32:41.490661+00:00",
       "equity": 9924.336410374637
+    },
+    {
+      "timestamp": "2026-09-26T11:37:57.360068+00:00",
+      "equity": 9924.336410374637
+    },
+    {
+      "timestamp": "2026-09-26T11:43:11.676097+00:00",
+      "equity": 9909.036410374636
+    },
+    {
+      "timestamp": "2026-09-26T11:48:26.014115+00:00",
+      "equity": 9909.036410374636
+    },
+    {
+      "timestamp": "2026-09-26T11:53:40.309751+00:00",
+      "equity": 9909.036410374636
+    },
+    {
+      "timestamp": "2026-09-26T11:58:54.770083+00:00",
+      "equity": 9909.036410374636
+    },
+    {
+      "timestamp": "2026-09-26T12:04:09.090950+00:00",
+      "equity": 9911.346741210049
     }
   ]
 }
