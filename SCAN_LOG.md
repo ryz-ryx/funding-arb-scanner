@@ -105,3 +105,54 @@ _Read-only scan. No orders are placed. Trailing3d Ann.% is the average of the la
 
 ---
 
+## Scan: 2026-09-26 02:55 UTC
+
+Min 24h volume $2,000,000 | trailing 9 intervals on top 60 candidates
+
+| Symbol | Trailing 3d Annualized % | 24h Volume USDT |
+|---|---:|---:|
+| ONE/USDT:USDT | -117.00% | 158,877,729 |
+| FLOCK/USDT:USDT | -91.30% | 4,331,412 |
+| KII/USDT:USDT | -78.73% | 3,548,556 |
+| RAVE/USDT:USDT | 62.33% | 2,390,200 |
+| RIVER/USDT:USDT | 56.41% | 3,891,294 |
+| LAB/USDT:USDT | 50.01% | 5,574,446 |
+| CASHCAT/USDT:USDT | 45.98% | 21,974,129 |
+| CYPH/USDT:USDT | 44.76% | 3,495,277 |
+| APR/USDT:USDT | 44.68% | 3,131,361 |
+| ARX/USDT:USDT | 34.95% | 2,495,010 |
+| H/USDT:USDT | 31.52% | 10,022,268 |
+| ORCL/USDT:USDT | 26.20% | 5,083,751 |
+| MINA/USDT:USDT | -24.82% | 2,638,368 |
+| CRCL/USDT:USDT | 24.46% | 38,986,484 |
+| SOXS/USDT:USDT | 22.72% | 13,830,980 |
+| EDGE/USDT:USDT | 20.94% | 3,170,725 |
+| PONS/USDT:USDT | 16.64% | 35,937,913 |
+| BILL/USDT:USDT | 16.60% | 3,606,774 |
+| BEAT/USDT:USDT | 12.80% | 8,984,459 |
+| ADA/USDT:USDT | 10.95% | 81,643,351 |
+| CFX/USDT:USDT | 10.95% | 3,610,110 |
+| CRO/USDT:USDT | 10.95% | 2,447,022 |
+| CORE/USDT:USDT | 10.79% | 2,636,859 |
+| CHZ/USDT:USDT | 10.57% | 2,350,590 |
+| AR/USDT:USDT | 10.53% | 7,788,818 |
+| DGAI/USDT:USDT | 9.23% | 18,126,516 |
+| TRX/USDT:USDT | -9.11% | 9,216,732 |
+| ALGO/USDT:USDT | 8.83% | 6,212,594 |
+| CAP/USDT:USDT | 8.49% | 4,689,533 |
+| CRV/USDT:USDT | 8.32% | 16,292,944 |
+| DOGE/USDT:USDT | 8.29% | 449,235,361 |
+| BONK/USDT:USDT | 8.23% | 9,162,818 |
+| AKE/USDT:USDT | 7.60% | 113,165,444 |
+| BNB/USDT:USDT | 7.37% | 45,055,252 |
+| GRVT/USDT:USDT | 6.82% | 2,151,530 |
+| MET/USDT:USDT | -6.44% | 7,089,922 |
+| BZ/USDT:USDT | -5.92% | 42,628,296 |
+| AERO/USDT:USDT | 5.85% | 20,288,706 |
+| XRP/USDT:USDT | 5.81% | 844,494,133 |
+| MUBARAK/USDT:USDT | 5.48% | 82,914,274 |
+
+_Read-only scan. No orders are placed. Trailing3d Ann.% is the average of the last ~3 days of funding intervals, annualized -- filters out one-off spikes. Cross-check any candidate with a full historical backtest before considering a position._
+
+---
+
