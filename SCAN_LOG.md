@@ -156,3 +156,54 @@ _Read-only scan. No orders are placed. Trailing3d Ann.% is the average of the la
 
 ---
 
+## Scan: 2026-09-26 10:36 UTC
+
+Min 24h volume $2,000,000 | trailing 9 intervals on top 60 candidates
+
+| Symbol | Trailing 3d Annualized % | 24h Volume USDT |
+|---|---:|---:|
+| ONE/USDT:USDT | -239.31% | 110,974,767 |
+| KII/USDT:USDT | -94.01% | 3,125,017 |
+| RAVE/USDT:USDT | 84.39% | 2,529,673 |
+| CASHCAT/USDT:USDT | 72.26% | 20,740,591 |
+| RIVER/USDT:USDT | 64.33% | 3,442,997 |
+| LAB/USDT:USDT | 57.75% | 5,750,926 |
+| APR/USDT:USDT | 47.70% | 3,103,570 |
+| H/USDT:USDT | 44.27% | 12,759,436 |
+| BB/USDT:USDT | 40.95% | 3,913,592 |
+| EDGE/USDT:USDT | 20.38% | 4,075,242 |
+| UP/USDT:USDT | 18.49% | 3,592,464 |
+| PONS/USDT:USDT | 18.30% | 34,276,328 |
+| BILL/USDT:USDT | 18.23% | 3,299,115 |
+| BEAT/USDT:USDT | 17.55% | 12,735,445 |
+| ARB/USDT:USDT | -12.72% | 87,465,035 |
+| TRX/USDT:USDT | -12.67% | 7,259,244 |
+| JELLYJELLY/USDT:USDT | 11.67% | 3,787,596 |
+| ADA/USDT:USDT | 10.95% | 79,279,984 |
+| CFX/USDT:USDT | 10.95% | 3,974,706 |
+| CRO/USDT:USDT | 10.95% | 2,216,326 |
+| CORE/USDT:USDT | 10.79% | 2,594,088 |
+| CHZ/USDT:USDT | 10.57% | 2,091,426 |
+| AR/USDT:USDT | 10.12% | 6,237,753 |
+| CAP/USDT:USDT | 9.11% | 3,364,945 |
+| MET/USDT:USDT | -8.97% | 7,158,831 |
+| AKE/USDT:USDT | 8.94% | 98,864,813 |
+| ALGO/USDT:USDT | 8.83% | 5,534,191 |
+| DGAI/USDT:USDT | 8.48% | 16,635,457 |
+| CRV/USDT:USDT | 8.32% | 15,412,469 |
+| DOGE/USDT:USDT | 8.29% | 410,886,432 |
+| BNB/USDT:USDT | 7.37% | 37,274,841 |
+| ENS/USDT:USDT | 6.68% | 2,586,144 |
+| AERO/USDT:USDT | 6.48% | 29,401,257 |
+| ZEC/USDT:USDT | 6.40% | 1,123,661,462 |
+| BICO/USDT:USDT | 6.29% | 2,381,586 |
+| LIT/USDT:USDT | -6.27% | 56,499,822 |
+| AAVE/USDT:USDT | 6.10% | 73,400,982 |
+| CP/USDT:USDT | 5.48% | 8,213,947 |
+| 0G/USDT:USDT | 5.48% | 2,445,967 |
+| ALLO/USDT:USDT | 5.48% | 4,998,474 |
+
+_Read-only scan. No orders are placed. Trailing3d Ann.% is the average of the last ~3 days of funding intervals, annualized -- filters out one-off spikes. Cross-check any candidate with a full historical backtest before considering a position._
+
+---
+
