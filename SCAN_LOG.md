@@ -207,3 +207,54 @@ _Read-only scan. No orders are placed. Trailing3d Ann.% is the average of the la
 
 ---
 
+## Scan: 2026-09-26 15:30 UTC
+
+Min 24h volume $2,000,000 | trailing 9 intervals on top 60 candidates
+
+| Symbol | Trailing 3d Annualized % | 24h Volume USDT |
+|---|---:|---:|
+| ONE/USDT:USDT | -296.84% | 102,947,971 |
+| CASHCAT/USDT:USDT | 78.53% | 15,933,381 |
+| RIVER/USDT:USDT | 62.77% | 2,612,119 |
+| LAB/USDT:USDT | 62.48% | 4,732,541 |
+| APR/USDT:USDT | 50.34% | 2,136,269 |
+| H/USDT:USDT | 47.51% | 12,960,868 |
+| 2Z/USDT:USDT | -47.40% | 70,196,678 |
+| ORCL/USDT:USDT | 25.28% | 2,088,968 |
+| EDGE/USDT:USDT | 21.72% | 5,537,481 |
+| BILL/USDT:USDT | 20.80% | 3,132,069 |
+| CRCL/USDT:USDT | 20.78% | 21,953,714 |
+| UP/USDT:USDT | 20.08% | 4,116,756 |
+| PONS/USDT:USDT | 18.06% | 33,068,077 |
+| BEAT/USDT:USDT | 17.54% | 24,278,985 |
+| TRX/USDT:USDT | -12.67% | 5,554,345 |
+| JELLYJELLY/USDT:USDT | 11.67% | 8,837,514 |
+| ADA/USDT:USDT | 10.95% | 62,930,574 |
+| CFX/USDT:USDT | 10.95% | 2,707,347 |
+| DYDX/USDT:USDT | 10.95% | 2,782,214 |
+| GALA/USDT:USDT | 10.95% | 3,870,228 |
+| CORE/USDT:USDT | 10.79% | 2,520,829 |
+| AR/USDT:USDT | 10.12% | 7,327,789 |
+| CP/USDT:USDT | 9.17% | 7,947,416 |
+| GIGGLE/USDT:USDT | 9.14% | 2,399,011 |
+| CAP/USDT:USDT | 9.11% | 2,916,254 |
+| ESP/USDT:USDT | -8.85% | 2,412,909 |
+| ALGO/USDT:USDT | 8.83% | 5,660,768 |
+| AKE/USDT:USDT | 8.75% | 99,878,892 |
+| DGAI/USDT:USDT | 8.48% | 14,502,319 |
+| ETC/USDT:USDT | 8.45% | 14,682,296 |
+| CRV/USDT:USDT | 8.32% | 11,008,199 |
+| DOGE/USDT:USDT | 8.29% | 293,861,947 |
+| FIL/USDT:USDT | 7.44% | 125,052,043 |
+| BNB/USDT:USDT | 7.37% | 22,088,259 |
+| AERO/USDT:USDT | 7.27% | 29,148,510 |
+| BASED/USDT:USDT | 6.20% | 2,218,659 |
+| AAVE/USDT:USDT | 6.10% | 58,183,129 |
+| XRP/USDT:USDT | 5.81% | 425,759,685 |
+| 0G/USDT:USDT | 5.48% | 2,698,263 |
+| ALLO/USDT:USDT | 5.48% | 6,123,267 |
+
+_Read-only scan. No orders are placed. Trailing3d Ann.% is the average of the last ~3 days of funding intervals, annualized -- filters out one-off spikes. Cross-check any candidate with a full historical backtest before considering a position._
+
+---
+
