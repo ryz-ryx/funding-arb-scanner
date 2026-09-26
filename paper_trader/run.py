@@ -52,6 +52,7 @@ MAX_POSITIONS = 5
 POSITION_SIZE_PCT = 0.20        # of starting capital, per position
 ENTRY_THRESHOLD_PCT = 15.0      # trailing 3d annualized %, to open
 EXIT_THRESHOLD_PCT = 3.0        # trailing 3d annualized %, to close
+MIN_HOLD_SECONDS = 8 * 3600     # hold through at least one funding interval before allowing exit
 ROUND_TRIP_COST_PCT = 0.51      # from funding_arb/backtest.py cost model (% of notional, full open+close cycle)
 MIN_24H_VOLUME_USDT = 2_000_000
 CANDIDATE_POOL = 60
@@ -197,7 +198,17 @@ def run_once(exchange, state, now):
 
         current = candidates_by_symbol.get(symbol)
         trailing = current["trailing_pct"] if current else None
-        should_exit = trailing is None or abs(trailing) < EXIT_THRESHOLD_PCT or trailing < 0
+        exit_signal = trailing is None or abs(trailing) < EXIT_THRESHOLD_PCT or trailing < 0
+
+        # Don't let a position exit before it's actually held through at least
+        # one funding interval. Without this, the 5-minute re-check cadence
+        # was flip-flopping on noisy trailing-average dips and paying the
+        # round-trip cost twice for zero funding collected in between --
+        # observed live on CYPH/USDT and AMZN/USDT (both -$10.20, $0 funding).
+        entry_dt = datetime.datetime.fromisoformat(pos["entry_time"])
+        held_seconds = (now - entry_dt).total_seconds()
+        past_min_hold = held_seconds >= MIN_HOLD_SECONDS
+        should_exit = exit_signal and past_min_hold
 
         if should_exit:
             close_cost = pos["notional"] * (ROUND_TRIP_COST_PCT / 100) / 2
